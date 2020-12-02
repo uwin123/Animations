@@ -16,8 +16,8 @@ public class EnemyParams : CharacterParams
         level = 1;
         maxHp = 50;
         curHp = maxHp;
-        attackMin = 10;
-        attackMax = 20;
+        attackMin = 3;
+        attackMax = 5;
         defense = 1;
 
         exp = 10;

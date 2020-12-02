@@ -42,6 +42,11 @@ public class SoundManager : MonoBehaviour
         myAudio.PlayOneShot(sndEnemyDie);
     }
 
+    public void PlayPickUpSound()
+    {
+        myAudio.PlayOneShot(sndPickUp);
+    }
+
     void Update()
     {
         

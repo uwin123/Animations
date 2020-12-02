@@ -85,6 +85,7 @@ public class PlayerFSM : MonoBehaviour
         {
             curEnemy = enemy;
             curTargetPos = curEnemy.transform.position;
+            GameManager.instance.ChangeCurrentTarget(curEnemy);
             ChangeState(State.Move, PlayerAni.ANI_WALK);
         }
         else

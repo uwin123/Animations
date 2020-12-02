@@ -15,8 +15,8 @@ public class PlayerParams : CharacterParams
         level = 1;
         maxHp = 100;
         curHp = maxHp;
-        attackMin = 5;
-        attackMax = 8;
+        attackMin = 20;
+        attackMax = 30;
         defense = 1;
 
         curExp = 0;
@@ -33,6 +33,12 @@ public class PlayerParams : CharacterParams
     {
         base.UpdateAfterReceiveAttack();
 
+        UIManager.instance.UpdatePlayerUI(this);
+    }
+
+    public void AddMoney(int money)
+    {
+        this.money += money;
         UIManager.instance.UpdatePlayerUI(this);
     }
 }
