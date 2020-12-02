@@ -50,6 +50,9 @@ public class EnemyFSM : MonoBehaviour
     {
         ChangeState(State.Dead, EnemyAni.DIE);
         player.gameObject.SendMessage("CurrentEnemyDead");
+
+        //몬스터가 사망했을 때 나는 소리 
+        SoundManager.instance.PlayEnemyDie();
     }
 
     public void ShowHitEffect()
@@ -122,6 +125,9 @@ public class EnemyFSM : MonoBehaviour
                 myAni.ChangeAni(EnemyAni.ATTACK);
 
                 attackTimer = 0.0f;
+
+                //몬스터가 공격할 때 나는 소리 
+                SoundManager.instance.PlayEnemyAttack();
             }
             attackTimer += Time.deltaTime;
         }

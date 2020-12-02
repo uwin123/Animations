@@ -69,6 +69,9 @@ public class PlayerFSM : MonoBehaviour
 
         int attackPower = myParams.GetRandomAttack();
         curEnemyParams.SetEnemyAttack(attackPower);
+
+        //플레이어가 공격할 때 나는 소리 
+        SoundManager.instance.PlayHitSound();
     }
 
     //적을 공격하기 위한 함수 

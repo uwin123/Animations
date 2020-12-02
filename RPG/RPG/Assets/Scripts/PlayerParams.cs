@@ -24,10 +24,15 @@ public class PlayerParams : CharacterParams
         money = 0;
 
         isDead = false;
+
+        //초기화 할때 헤드업 디스플레이에 플레이어의 이름과 기타 정보들이 제대로 표시되도록 함.
+        UIManager.instance.UpdatePlayerUI(this);
     }
 
     protected override void UpdateAfterReceiveAttack()
     {
         base.UpdateAfterReceiveAttack();
+
+        UIManager.instance.UpdatePlayerUI(this);
     }
 }
