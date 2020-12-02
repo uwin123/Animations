@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,14 +39,29 @@ public class PlayerFSM : MonoBehaviour
     {
         myAni = GetComponent<PlayerAni>();
         //myAni.ChangeAni(PlayerAni.ANI_IDLE);
-        ChangeState(State.Idle, PlayerAni.ANI_IDLE);
         myParams = GetComponent<PlayerParams>();
         myParams.InitParams();
+        myParams.deadEvent.AddListener(ChangeToPlayerDead);
+        ChangeState(State.Idle, PlayerAni.ANI_IDLE);
     }
+
+    public void ChangeToPlayerDead()
+    {
+        print("player was dead");
+        ChangeState(State.Dead, PlayerAni.ANI_DIE);
+    }
+
+    public void CurrentEnemyDead()
+    {
+        ChangeState(State.Idle, PlayerAni.ANI_IDLE);
+        print("enemy was killed");
+        curEnemy = null;
+    }
+
 
     public void AttackCalculate()
     {
-        if(curEnemy == null)
+        if (curEnemy == null)
         {
             return;
         }
@@ -149,6 +164,9 @@ public class PlayerFSM : MonoBehaviour
     //MoveTo(캐릭터가 이동할 목표 지점의 좌표)
     public void MoveTo(Vector3 t_Pos)
     {
+        //사망 하였을 때 움직임 리턴 처리 (여기서 끝냄)
+        if (currentState == State.Dead)
+            return;
         curEnemy = null;
         curTargetPos = t_Pos;
         ChangeState(State.Move, PlayerAni.ANI_WALK);

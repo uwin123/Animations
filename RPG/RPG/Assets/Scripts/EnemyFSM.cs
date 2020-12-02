@@ -40,8 +40,16 @@ public class EnemyFSM : MonoBehaviour
         ChangeState(State.Idle, EnemyAni.IDLE);
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerParams = player.gameObject.GetComponent<PlayerParams>();
 
         hitEffect.Stop();
+    }
+
+    //몬스터가 죽는 순간 처리 명령어
+    void CallDeadEvent()
+    {
+        ChangeState(State.Dead, EnemyAni.DIE);
+        player.gameObject.SendMessage("CurrentEnemyDead");
     }
 
     public void ShowHitEffect()
@@ -121,7 +129,7 @@ public class EnemyFSM : MonoBehaviour
 
     void DeadState()
     {
-
+        GetComponent<BoxCollider>().enabled = false;
     }
 
     void NoState()
@@ -137,6 +145,10 @@ public class EnemyFSM : MonoBehaviour
     void MoveToDestination()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+    }
+    public void AttackCalculate()
+    {
+        playerParams.SetEnemyAttack(myParams.GetRandomAttack());
     }
 
     //플레이어와 거리를 재는 함수 
