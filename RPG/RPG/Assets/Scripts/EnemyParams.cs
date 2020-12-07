@@ -19,9 +19,11 @@ public class EnemyParams : CharacterParams
         attackMin = 3;
         attackMax = 5;
         defense = 1;
-
+        
         exp = 10;
         rewardMoney = Random.Range(10, 31);
+
+        //XMLManager에서 넘겨 받은 이름을 해당하는 몬스터 파라미터를 찾아서 주요 파라미터 값을 반영해 주게 된다.
         isDead = false;
 
         InitHpBarSize();

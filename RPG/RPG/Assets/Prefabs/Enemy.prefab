@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1053ffc5df35fc44a393ead4d465dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newname: 
+  newname: spider
   hpBar: {fileID: 5800737966150508058}
 --- !u!143 &4087640883177461372
 CharacterController:

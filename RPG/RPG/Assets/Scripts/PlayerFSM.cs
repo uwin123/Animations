@@ -28,7 +28,7 @@ public class PlayerFSM : MonoBehaviour
     float attackDelay = 1.2f;                           //공격을 한번하고 다시 공격할때 까지의 지연시간
     float attackTimer = 0.0f;                           //공격을 하고 난 뒤에 경과되는 시간을 계산하기 위한 변수 
     float attackDistance = 1.5f;                        //공격 거리 (적과의 거리)
-    float chaseDistance = 2.5f;                         //전투 중 적이 도망가면서 다시 추적을 시작하기 위한 거리 
+    //float chaseDistance = 2.5f;                         //전투 중 적이 도망가면서 다시 추적을 시작하기 위한 거리 
     #endregion
 
     PlayerAni myAni;
